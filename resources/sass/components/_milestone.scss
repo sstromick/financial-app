@@ -1,0 +1,79 @@
+@include b(milestone) {
+    $b: &;
+    
+    // To make checkmark/circle line up with headings
+    $leftSideVerticalShift: 3px;
+    
+    svg {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .svg--checkCircle {
+        opacity: 0;
+    }
+    
+    &:last-child {
+        #{$b}__left {
+            &::after {
+                content: none;
+            }
+        }
+        
+        #{$b}__right {
+            padding-bottom: $navProgressGradientHeight;
+        }
+    }
+
+    
+    @include e(left) {
+        position: relative;
+        padding-top: $leftSideVerticalShift;
+
+        svg {
+            background-color: $primary;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: $leftSideVerticalShift;
+            transform: translate(-50%, 0);
+            border-right: 2px solid $white;
+            height: 100%;
+            z-index: -1;
+        }
+    }
+
+
+    @include e(right) {
+        padding-left: rem-calc(10);
+
+        // Add space between milestones
+        padding-bottom: rem-calc(40);
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    @include m(completed) {
+
+        .svg--checkCircle {
+            opacity: 1;
+        }
+
+        .svg--hollowCircle {
+            opacity: 0;
+        }
+    }
+
+    @include m(intro) {
+        
+        @include e(right) {
+            padding-bottom: rem-calc(50);
+        }
+    }
+}

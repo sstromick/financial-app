@@ -1,0 +1,93 @@
+// No classes/IDs, just elements
+$global-scaled-font-size: $global-font-size !default;
+
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+    // Note, extremely large/small rem values will still need adjustments on smaller screens
+    font-size: $global-scaled-font-size * 0.6;
+
+    @include breakpoint(medium-large) {
+        font-size: $global-scaled-font-size * 0.75;
+    }
+
+    @include breakpoint(large) {
+        font-size: $global-scaled-font-size * 0.7;
+    }
+
+    @include breakpoint(xlarge) {
+        font-size: $global-scaled-font-size * 0.7;
+    }
+
+    @include breakpoint(xxlarge) {
+        font-size: $global-scaled-font-size * 0.95;
+    }
+
+    @include breakpoint(xxxlarge) {
+        font-size: $global-scaled-font-size * 1;
+    }
+
+    --progress: 0%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+*:focus {
+    outline: none;
+}
+
+svg {
+    &,
+    * {
+        transition: opacity $timingFunction, fill $timingFunction,
+            stroke $timingFunction;
+    }
+}
+
+a,
+button {
+    transition: color $timingFunction, background $timingFunction,
+        box-shadow $timingFunction, border-color $timingFunction;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        // color: $secondary;
+    }
+}
+
+hr {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    border: 0;
+    width: 100%;
+    // Apply colors separately depending on parent element
+    border-top: 1px solid transparent;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.select-arrow {
+    pointer-events: none;
+}

@@ -1,0 +1,274 @@
+@include b(form) {
+    width: rem-calc(675);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include m(expense) {
+        margin-top: 0;
+
+        @include breakpoint(xxlarge) {
+            margin-top: 3rem;
+        }
+    }
+    @include e(fieldWrapper) {
+    }
+
+    @include e(label) {
+        order: -1;
+    }
+
+    @include e(fieldWrapper) {
+        @include m(8) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(medium) {
+                @include xy-cell(
+                    8%,
+                    $gutter-position: (top, bottom, left, right)
+                );
+            }
+        }
+
+        @include m(14) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(medium) {
+                @include xy-cell(
+                    14%,
+                    $gutter-position: (top, bottom, left, right)
+                );
+            }
+        }
+
+        @include m(17) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(medium) {
+                @include xy-cell(
+                    17%,
+                    $gutter-position: (top, bottom, left, right)
+                );
+            }
+        }
+
+        @include m(19) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(medium) {
+                @include xy-cell(
+                    19%,
+                    $gutter-position: (top, bottom, left, right)
+                );
+            }
+        }
+
+        // City and Zip fields
+        @include m(37) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(medium) {
+                @include xy-cell(
+                    37%,
+                    $gutter-position: (top, bottom, left, right)
+                );
+            }
+        }
+
+        @include m(closeButtonAfter) {
+        }
+
+        @include m(manualDebtsSelect) {
+            @include xy-cell(
+                100%,
+                $gutter-position: (top, bottom, left, right)
+            );
+
+            @include breakpoint(large) {
+                width: rem-calc(230);
+            }
+        }
+
+        @include m(deleteRowButtonWrapper) {
+            position: absolute;
+            right: -8%;
+            top: rem-calc(15);
+
+            @include breakpoint(large) {
+                right: 0;
+            }
+        }
+    }
+
+    @include e(checkboxWrapper) {
+        width: rem-calc(28);
+        height: rem-calc(28);
+
+        svg {
+            transition: $timingFunctionAll;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            &.svg--checkboxChecked {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+
+    @include m(debts) {
+        width: rem-calc(815);
+    }
+
+    @include m(blocks) {
+        width: auto;
+    }
+
+    input {
+        &[type="checkbox"] {
+            &:checked {
+                + label {
+                    .svg--checkboxChecked {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+
+                    .svg--checkbox {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @include e(label) {
+        @include m(upload) {
+            width: rem-calc(535);
+            margin: 0 auto;
+            padding: rem-calc(35);
+            background-color: $paleLightGreen;
+            border: 1px solid $gray;
+            border-radius: rem-calc(20);
+            transition: $timingFunctionAll;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                background-color: darken($paleLightGreen, 10%);
+            }
+        }
+    }
+
+    @include e(input) {
+        @include m(upload) {
+        }
+    }
+
+    // Classes generated using vee-validate
+    .is-invalid.required,
+    .failed.required {
+        input,
+        textarea {
+            border-color: $error !important;
+            background-color: $paleError !important;
+            color: $error !important;
+            font-weight: 500;
+
+            @include placeholder {
+                color: $error !important;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .errors-wrapper {
+        font-size: rem-calc(16);
+        font-weight: 600;
+        color: $error;
+        margin: rem-calc(3 0 5);
+        line-height: 1;
+        height: 0;
+        width: 100%;
+    }
+}
+
+input,
+textarea,
+select {
+    font-size: rem-calc(20);
+    font-weight: 300;
+    width: 100%;
+    transition: $timingFunctionAll;
+    margin-bottom: 0;
+
+    &:not([type="submit"]):not([type="checkbox"]):not([type="radio"]) {
+        border-radius: rem-calc(2);
+        color: $gray;
+        border: 1px solid $gray;
+        box-shadow: 0px 0px 0px 1px rgba($darkGray, 0);
+
+        background-color: $offwhite;
+
+        &:focus,
+        &:active,
+        &:not(:placeholder-shown) {
+            border-color: $darkGray;
+            color: $darkGray;
+
+            // TODO: Confirm if they are wanting this or not, design inconsistent
+            // font-weight: 500;
+            // Grow "border" without content shifting around
+            // box-shadow: 0px 0px 0px 1px rgba($darkGray, 1);
+        }
+    }
+}
+
+input,
+select {
+    &:not([type="submit"]):not([type="checkbox"]):not([type="radio"]) {
+        height: rem-calc(60);
+        padding: rem-calc(0 16);
+    }
+}
+
+select {
+    appearance: none;
+}
+
+textarea {
+    height: rem-calc(195);
+    padding: rem-calc(22 16);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    background-color: $offwhite !important;
+    border: 1px solid $darkGray !important;
+    color: $darkGray !important;
+    -webkit-text-fill-color: $darkGray !important;
+    -webkit-box-shadow: none;
+    transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,0 +1,14 @@
+@include b(timer) {
+    box-shadow: rem-calc(0 5 10) rgba(0, 0, 0, 0.16);
+    border: 1px solid $secondary;
+    border-radius: rem-calc(35);
+    width: rem-calc(253);
+    height: rem-calc(70);
+    position: fixed;
+    top: rem-calc(22);
+    right: rem-calc(140);
+    
+    @include e(inner) {
+        
+    }
+}

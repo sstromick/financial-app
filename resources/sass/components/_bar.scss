@@ -1,0 +1,6 @@
+@include b(bar) {
+    padding: rem-calc(20 0);
+    @include breakpoint(medium-large) {
+        padding: rem-calc(20 0);
+    }
+}

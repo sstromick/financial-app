@@ -1,0 +1,246 @@
+// Fonts
+// ----------------------------------------------
+
+// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $display: swap, $asset-pipeline: false) {
+    @font-face {
+        font-family: quote($font-family);
+
+        @if $asset-pipeline==true {
+            src: font-url('#{$file-path}.eot');
+            src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+            font-url('#{$file-path}.woff2') format('woff2'),
+            font-url('#{$file-path}.woff') format('woff'),
+            font-url('#{$file-path}.ttf') format('truetype'),
+            font-url('#{$file-path}.svg##{$font-family}') format('svg');
+        }
+
+        @else {
+            src: url('#{$file-path}.eot');
+            src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+            url('#{$file-path}.woff2') format('woff2'),
+            url('#{$file-path}.woff') format('woff'),
+            url('#{$file-path}.ttf') format('truetype'),
+            url('#{$file-path}.svg##{$font-family}') format('svg');
+        }
+
+        font-weight: $weight;
+        font-style: $style;
+        font-display: $display;
+    }
+}
+
+// Input placeholder
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+// line-height - divide desired line-height by font-size
+@mixin line-height($line-height: $base-line-height, $font-size: $base-font-size) {
+    line-height: $line-height / $font-size;
+}
+
+@mixin margin-bottom($line-height: $base-line-height, $font-size: $base-font-size) {
+    margin-bottom: $line-height / $font-size + em;
+}
+
+// Vertical rhythm - combines font-size, line-height, and margin-bottom
+@mixin vertical-rhythm($line-height: $base-line-height, $font-size: $base-font-size, $margin-divide: 2) {
+    font-size: #{$font-size}px;
+    font-size: #{$font-size / 10}rem;
+    line-height: $line-height / $font-size;
+    margin-bottom: ($line-height / $font-size) / $margin-divide + em;
+}
+
+// Helpers
+// ----------------------------------------------
+
+// Image replacement
+@mixin ir {
+    overflow: hidden;
+    border: 0;
+    background-color: transparent;
+    *text-indent: -9999px;
+
+    &:before {
+        display: block;
+        width: 0;
+        height: 150%;
+        content: "";
+    }
+}
+
+// Center align block element
+@mixin center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin text-overflow {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin circle {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+@mixin hover-shadow($shadow: 0 5px 15px rgba(0, 0, 0, 0.3), $radius: 0, $transition: $timingFunctionAll, $flip: "no") {
+    position: relative;
+    border-radius: $radius;
+
+    &::after {
+        content: "";
+        border-radius: $radius;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: $shadow;
+
+        @if $flip=="no" {
+            opacity: 0;
+        }
+
+        @else {
+            opacity: 1;
+        }
+
+        transition: $transition;
+        pointer-events: none;
+    }
+
+    &:hover::after,
+    &:focus::after,
+    &:active::after {
+        @if $flip=="no" {
+            opacity: 1;
+        }
+
+        @else {
+            opacity: 0;
+        }
+
+        transition: $transition;
+    }
+}
+
+@mixin fakeOverlap($topColor, $bottomColor, $percentageTop) {
+    background: $topColor;
+    background: -moz-linear-gradient(180deg, $topColor 0%, $topColor $percentageTop, $bottomColor $percentageTop, $bottomColor 100%);
+    background: -webkit-linear-gradient(180deg, $topColor 0%, $topColor $percentageTop, $bottomColor $percentageTop, $bottomColor 100%);
+    background: linear-gradient(180deg, $topColor 0%, $topColor $percentageTop, $bottomColor $percentageTop, $bottomColor 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$topColor}, endColorstr=#{$bottomColor}, GradientType=1);
+}
+
+
+// Spacing - margins and padding.
+@mixin spacing($spacing-type: padding,
+    $step-size: 0.75,
+    $step-num: 16,
+    $base-unit: 1rem) {
+    $prefix: p;
+
+    @if margin==$spacing-type {
+        $prefix: m;
+    }
+
+    @for $i from 0 through $step-num {
+
+        // Affect single side
+        // ex: .mb-4
+        @each $pos in top right bottom left {
+            .#{$prefix}#{str-slice($pos, 1, 1)}-#{$i} {
+                #{$spacing-type}-#{$pos}: ($i * $step-size * $base-unit);
+            }
+        }
+
+        // Affect x-axis sides
+        // ex: .mx-4
+        .#{$prefix}x-#{$i} {
+            @extend .#{$prefix}l-#{$i};
+            @extend .#{$prefix}r-#{$i};
+        }
+
+        // Affect y-axis sides
+        // ex: .py-2
+        .#{$prefix}y-#{$i} {
+            @extend .#{$prefix}t-#{$i};
+            @extend .#{$prefix}b-#{$i};
+        }
+
+        // Affect sides
+        // ex: .p-0
+        .#{$prefix}-#{$i} {
+            @extend .#{$prefix}x-#{$i};
+            @extend .#{$prefix}y-#{$i};
+        }
+    }
+}
+
+
+@mixin allowScrollHideScrollbar {
+    overflow: scroll;
+    overflow-x: hidden;
+
+    // Allows content to scroll, while hiding the scroll bar
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+
+    &::-webkit-scrollbar {
+        /* WebKit */
+        width: 0;
+        height: 0;
+    }
+}
+
+
+// Provide for a 'false' inner box that responds to breakpoints
+@mixin boxed-grid($breakpoint) {
+    $breakpointSize: map-get($breakpoints, $breakpoint);
+
+    @at-root [class*="#{$breakpoint}-"]:first-child #{&} {
+        @media screen and (min-width: #{$breakpointSize}px) {
+            margin-left: auto;
+        }
+    }
+
+    @for $i from 1 through $grid-column-count {
+        @at-root .#{$breakpoint}-#{$i} #{&} {
+            @media screen and (min-width: #{$breakpointSize}px) {
+                max-width: ($i / 12) * #{$breakpointSize}px;
+            }
+        }
+    }
+}

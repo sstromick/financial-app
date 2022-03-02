@@ -1,0 +1,11 @@
+// Chat widget
+#sharpenChat {
+    #openChatBtn {
+        display: none !important;
+    }
+}
+
+
+@include b(chat) {
+    
+}

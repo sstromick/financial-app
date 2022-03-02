@@ -1,0 +1,14 @@
+@include b(nav) {
+    
+
+    @include e(inner) {
+        padding: rem-calc(0 50 0 70);
+        
+        @include breakpoint(large) {
+            padding: rem-calc(0 100 0 145);
+        }
+    }
+
+
+    
+}

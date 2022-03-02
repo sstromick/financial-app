@@ -1,0 +1,87 @@
+[data-tippy-root] {
+
+    .tippy-svg-arrow {
+        fill: $offwhite;
+
+        path {
+            stroke: $tooltipBorderGray;
+        }
+    }
+}
+
+
+.tippy-box {
+    $arrowSize: rem-calc(12);
+    background-color: $offwhite;
+    border: 2px solid $tooltipBorderGray;
+    // left: rem-calc(34) !important;
+    width: rem-calc(285);
+    color: $gray;
+    font-size: rem-calc(14);
+
+    &[data-placement^='right']>.tippy-arrow {
+
+        &::before {
+            border-right-color: $offwhite;
+            left: -$arrowSize + rem-calc(3);
+            border-width: $arrowSize $arrowSize $arrowSize 0;
+        }
+
+
+        &::after {
+            border-right-color: $tooltipBorderGray;
+            border-width: $arrowSize $arrowSize $arrowSize 0;
+            left: -$arrowSize;
+        }
+    }
+
+
+    &[data-placement="left"] {
+
+        >.tippy-arrow {
+            &::before {
+                border-left-color: $offwhite;
+                border-width: $arrowSize 0 $arrowSize $arrowSize;
+                right: -$arrowSize + rem-calc(3);
+                top: rem-calc(-30);
+            }
+
+            &::after {
+                border-left-color: $tooltipBorderGray;
+                border-width: $arrowSize 0 $arrowSize $arrowSize;
+                right: -$arrowSize;
+                top: rem-calc(-30);
+            }
+        }
+    }
+
+    &[data-placement="right-start"] {
+        transform: translateY(-26%);
+
+        >.tippy-arrow {
+            // Override inline
+            top: 25% !important;
+
+
+            &::before,
+            &::after {}
+        }
+    }
+}
+
+
+@include b(tooltip) {
+    padding: rem-calc(15 15 20 15);
+    font-size: rem-calc(14);
+
+
+    @include e(helpIcon) {
+
+        @include m(insideInput) {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-100%, -50%);
+        }
+    }
+}

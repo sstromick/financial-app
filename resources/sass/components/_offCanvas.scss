@@ -1,0 +1,61 @@
+@include b(off-canvas) {
+    // padding-left: 7.5vw;
+    
+    @include e(inner) {  
+    }
+    
+    
+    @include e(top) {
+        height: 15%;
+        padding: rem-calc(45 0 0 55);
+        
+        @include breakpoint(large) {
+            padding: rem-calc(45 0 0 126);
+        }
+        
+    }
+    
+    @include e(middle) {
+        height: 75%;
+        
+        // Gradient indicating more content available
+        &::after {
+            content: "";
+            width: 100%;
+            height: calc(#{$navProgressGradientHeight} - 15px);
+            // background-image: linear-gradient(180deg, rgba($primary, 0) 0%, $primary 100%);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            background-image: 
+                linear-gradient(
+                  to top,
+                  rgba($primary, 1) 0%,
+                  rgba($primary, 0.987) 16.3%,
+                  rgba($primary, 0.951) 30.7%,
+                  rgba($primary, 0.896) 43.4%,
+                  rgba($primary, 0.825) 54.5%,
+                  rgba($primary, 0.741) 64.1%,
+                  rgba($primary, 0.648) 72.4%,
+                  rgba($primary, 0.55) 79.3%,
+                  rgba($primary, 0.45) 85%,
+                  rgba($primary, 0.352) 89.6%,
+                  rgba($primary, 0.259) 93.2%,
+                  rgba($primary, 0.175) 95.9%,
+                  rgba($primary, 0.104) 97.9%,
+                  rgba($primary, 0.049) 99.1%,
+                  rgba($primary, 0.013) 99.8%,
+                  rgba($primary, 0) 100%
+                );
+        }
+    }
+    
+    @include e(bottom) {
+        padding: rem-calc(20 0 20 40);
+        
+        @include breakpoint(large) {
+            padding: rem-calc(20 0 20 120);
+        }
+        
+    }
+}

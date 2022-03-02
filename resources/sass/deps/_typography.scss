@@ -1,0 +1,32 @@
+// Gibson
+@include font-face('Gibson', '../fonts/Gibson/Gibson-Light', 300);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-Regular', 400);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-Medium', 500);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-Semibold', 600);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-Bold', 700);
+
+// Gibson (Italic)
+@include font-face('Gibson', '../fonts/Gibson/Gibson-LightItalic', 300, italic);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-RegularItalic', 400, italic);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-MediumItalic', 500, italic);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-SemiboldItalic', 600, italic);
+@include font-face('Gibson', '../fonts/Gibson/Gibson-BoldItalic', 700, italic);
+
+
+// Gibson Book
+@include font-face('Gibson Book', '../fonts/Gibson-Book/Gibson-Book', 300);
+
+
+// FF Unit Slab Pro
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-Thin', 100);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-Light', 300);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-Regular', 400);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-Medium', 500);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-Bold', 700);
+
+// FF Unit Slab Pro (Italic)
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-ThinItalic', 100, italic);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-LightItalic', 300, italic);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-RegularItalic', 400, italic);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-MediumItalic', 500, italic);
+@include font-face('FF Unit Slab Pro', '../fonts/FFUnitSlabPro/FFUnitSlabPro-BoldItalic', 700, italic);

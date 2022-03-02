@@ -1,0 +1,27 @@
+@include b(video) {
+    $height: rem-calc(460);
+    $width: rem-calc(815);
+    height: $height;
+    width: $width;
+    max-width: 100%;
+    box-shadow: rem-calc(0 8 20) rgba(0, 0, 0, 0.2);
+    
+    @include e(overlay) {
+        background-color: rgba($black, 0.3);
+        transition: $timingFunctionAll;
+    }
+    
+    video {
+        width: 100%;
+        height: $height;
+    }
+    
+    
+    @include m(playing) {
+        
+        @include e(overlay) {
+            opacity: 0;
+        }
+    }
+    
+}

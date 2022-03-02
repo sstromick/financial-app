@@ -1,0 +1,121 @@
+@include b(categoryBlockWrapper) {
+    @include xy-grid;
+
+    @include xy-grid-layout(
+        1,
+        ".categoryBlock",
+        $gutters: 36,
+        $gutter-position: (top, bottom)
+    );
+
+    @include breakpoint(medium) {
+        @include xy-grid-layout(
+            3,
+            ".categoryBlock",
+            $gutters: 36,
+            $gutter-position: (top, bottom, left, right)
+        );
+    }
+
+    @include breakpoint(large) {
+        @include xy-grid-layout(
+            4,
+            ".categoryBlock",
+            $gutters: 36,
+            $gutter-position: (top, bottom, left, right)
+        );
+    }
+
+    @include breakpoint(xxlarge) {
+        @include xy-grid-layout(
+            3,
+            ".categoryBlock",
+            $gutters: 36,
+            $gutter-position: (top, bottom, left, right)
+        );
+    }
+}
+
+@include b(categoryBlock) {
+    $borderRadius: rem-calc(20);
+    box-shadow: rem-calc(0 8 20) rgba(0, 0, 0, 0.2);
+    border-radius: $borderRadius;
+
+    @include breakpoint(xlarge) {
+        min-height: 150px;
+    }
+    @include breakpoint(xxlarge) {
+        min-height: auto;
+    }
+
+    @include e(inner) {
+    }
+
+    label {
+        border-radius: $borderRadius;
+        margin: 0;
+        border: rem-calc(3) solid transparent;
+        transition: $timingFunctionAll;
+        padding: rem-calc(35 10);
+
+        @include breakpoint(large) {
+            padding: rem-calc(35 10);
+        }
+        @include breakpoint(xlarge) {
+            padding: rem-calc(15 10);
+        }
+        @include breakpoint(xxlarge) {
+            padding: rem-calc(45 10 45);
+        }
+    }
+
+    @include e(image) {
+        transition: $timingFunctionAll;
+        height: auto;
+
+        @include breakpoint(medium) {
+            height: 50px;
+        }
+        @include breakpoint(xxlarge) {
+            height: auto;
+        }
+    }
+
+    @include e(input) {
+        &:checked {
+            + label {
+                background-color: $paleLightGreen;
+                border-color: $secondary;
+
+                // Hide icon
+                .categoryBlock__image {
+                    opacity: 0;
+                }
+
+                // Show circular checkmark
+                .categoryBlock__check {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &:hover,
+    &:focus {
+        label {
+            border-color: $secondary;
+        }
+    }
+
+    @include e(check) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    [value="Other"] + label img {
+        margin-right: rem-calc(-25);
+    }
+}

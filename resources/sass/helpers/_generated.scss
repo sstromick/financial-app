@@ -1,0 +1,176 @@
+// Put all color-based helpers in this one loop, cuts down build time
+@each $name, $color in $foundation-palette {
+
+    // Text colors
+    // .text-primary
+    .text-#{$name} {
+        color: $color;
+    }
+
+    // Background colors
+    // .bg-primary
+    .bg-#{$name} {
+        background-color: $color;
+    }
+
+    // Border colors
+    // .border-primary
+    .border-#{$name} {
+        border-color: $color;
+    }
+
+    .fill-#{$name} {
+
+        &,
+        svg,
+        path {
+            fill: $color;
+        }
+    }
+
+    // Target possible child links within a parent (useful when CMS allows for links to be created along with text)
+    .links-are-#{$name} {
+        a {
+            color: $color;
+        }
+    }
+
+    .headings-are-#{$name} {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $color;
+        }
+    }
+
+    .strongs-are-#{$name} {
+
+        strong,
+        b,
+        .weight-bold,
+        .weight-700 {
+            color: $color;
+        }
+    }
+
+    .hover\:#{$name} {
+
+        &:hover,
+        &:focus,
+        &:active,
+        a:hover,
+        a:focus,
+        a:active {
+            color: $color;
+
+            svg,
+            path {
+                fill: $color;
+            }
+        }
+    }
+
+    .hover\:links-are-#{$name} {
+
+        a:hover,
+        a:focus,
+        a:active {
+            color: $color;
+        }
+    }
+
+    .hover\:fill-#{$name} {
+
+        &:hover,
+        &:focus,
+        &:active {
+
+            &,
+            svg,
+            path {
+                fill: $color;
+            }
+        }
+    }
+
+    .hover\:stroke-#{$name} {
+
+        &:hover,
+        &:focus,
+        &:active {
+
+            &,
+            svg,
+            path {
+                stroke: $color;
+            }
+        }
+    }
+}
+
+// Text size with number corresponding to px
+// .text-16, .text-80
+@for $i from 1 through 100 {
+    .text-#{$i} {
+        font-size: rem-calc($i);
+    }
+}
+
+// Font weights
+// .weight-bold
+@each $weight in 100 200 300 400 500 600 700 800 900 normal lighter bold bolder inherit initial unset {
+    .weight-#{$weight} {
+        font-weight: $weight;
+    }
+}
+
+// Add some display styles.
+// ex: .inline-block
+@each $display in none block inline-block flex inline-flex grid table table-row table-cell {
+    .display-#{$display} {
+        display: $display;
+    }
+}
+
+// Flex wrap
+// .flex-wrap
+@each $wrap in nowrap wrap wrap-reverse {
+    .flex-#{$wrap} {
+        flex-wrap: $wrap;
+    }
+}
+
+// Add positions
+// .static
+@each $pos in static fixed absolute relative sticky {
+    .#{$pos} {
+        position: $pos;
+    }
+}
+
+// Flex direction
+// .flex-col
+@each $dir in row row-reverse column column-reverse {
+    .flex-#{$dir} {
+        flex-direction: $dir;
+    }
+}
+
+@for $i from -1 through 10 {
+    .z-#{$i} {
+        z-index: $i;
+    }
+}
+
+
+
+// Padding & Margin convenience styles ex: .px-2, .mb-4 etc
+$spacing-step: 0.5 !default;
+$spacing-step-count: 40 !default;
+
+@include spacing(padding, $spacing-step, $spacing-step-count);
+@include spacing(margin, $spacing-step, $spacing-step-count);

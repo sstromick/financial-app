@@ -1,0 +1,23 @@
+@include b(progressBar) {
+    // background-image: linear-gradient(to right, $secondary var(--progress), transparent 0);
+    height: 100%;
+    width: 100%;
+    position: relative;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: $secondary;
+        transition: $timingFunctionAll;
+        width: var(--progress);
+        top: 0;
+        left: 0;
+        height: 100%;
+        
+    }
+}
+
+@include b(progressBarWrapper) {
+    height: rem-calc(8);
+    width: 100%;
+}

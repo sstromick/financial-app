@@ -1,0 +1,53 @@
+@include b(grid-container) {
+    @include m(large) {
+        max-width: 100%;
+
+        @include breakpoint(xxxlarge) {
+            max-width: rem-calc(1665);
+        }
+    }
+
+    @include m(small) {
+        max-width: 100%;
+
+        @include breakpoint(xlarge) {
+            max-width: rem-calc(1000);
+        }
+        @include breakpoint(xxlarge) {
+            max-width: rem-calc(1000);
+        }
+    }
+
+    @include m(smaller) {
+        max-width: 95%;
+
+        @include breakpoint(medium-large) {
+            max-width: 90%;
+        }
+        @include breakpoint(large) {
+            max-width: 100%;
+        }
+        @include breakpoint(xxlarge) {
+            max-width: rem-calc(815);
+        }
+    }
+}
+
+html {
+    &.completed {
+        &,
+        body {
+            background-color: $secondary;
+        }
+
+        .button--offCanvasToggle {
+            path {
+                fill: $white;
+            }
+        }
+
+        #progress-wrapper {
+            display: none;
+        }
+    }
+}

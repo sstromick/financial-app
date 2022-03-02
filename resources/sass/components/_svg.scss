@@ -1,0 +1,79 @@
+@include b(svg) {
+    
+    
+    @include m(check) {
+        width: rem-calc(75);
+        height: rem-calc(74);
+    }
+    
+    @include m(arrowDown) {
+        width: 11px;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translate(-50%, -50%);
+    }
+    
+    
+    @include m(checkbox) {
+        width: rem-calc(28);
+        height: rem-calc(28);
+        cursor: pointer;
+        
+        &:hover, &:focus {
+            path {
+                fill: $darkGray;
+            }
+        }
+    }
+    
+    @include m(checkboxChecked) {
+        width: rem-calc(27);
+        height: rem-calc(27);
+        cursor: pointer;
+        
+        &:hover, &:focus {
+            path {
+                fill: darken($secondary, 10%);
+            }
+        }
+    }
+    
+    @include m(irisSmall) {
+        width: rem-calc(53);
+        height: rem-calc(52);
+    }
+    
+    
+    @include m(tooltip) {
+        $shift: rem-calc(17);
+        position: absolute;
+        top: 0;
+        left: -$shift;
+        width: calc(100% + #{$shift});
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+    }
+    
+    @include m(timer) {
+        width: rem-calc(23);
+        height: rem-calc(26);
+    }
+    
+    
+    @include m(open) {
+        width: rem-calc(40);
+        height: rem-calc(27);
+    }
+    
+    @include m(close) {
+        width: rem-calc(27);
+        height: rem-calc(27);
+    }
+    
+    @include m(irisNavMilestone) {
+        width: rem-calc(87);
+        height: rem-calc(88);
+    }
+}
